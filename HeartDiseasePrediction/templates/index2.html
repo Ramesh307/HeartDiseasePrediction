@@ -1,0 +1,334 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+        crossorigin="anonymous"
+      />
+      <style type="text/css">
+        .form {
+    width: 85%;
+    margin: auto;
+    background-color: #205072;
+    padding: 50px 80px;
+  }
+  .form h3 {
+    color: #fff;
+    font-family: serif;
+    font-size: 30px;
+    letter-spacing: 2px;
+  }
+  .form .input {
+    margin: 20px 20px;
+  }
+  .form input[type="text"] {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #fff;
+    padding: 7px 2px;
+    color: #fff;
+    font-size: 16px;
+    font-family: serif;
+    letter-spacing: 2px;
+  }
+  .form label {
+    color: #fff;
+    font-size: 17px;
+    font-family: serif;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .gender .gen {
+    border-bottom: 1px solid transparent;
+    padding-right: 30px !important;
+    padding: 0px 5px;
+    padding-top: 5px;
+  }
+  .form button {
+    width: 120px;
+    padding: 6px 0px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-family: serif;
+    letter-spacing: 2px;
+    font-weight: 550;
+    color: #205072;
+  }
+  .form .button {
+    text-align: center;
+    padding: 40px 0px 10px 0px;
+  }
+
+.out{
+ text-align: center;
+  padding: 40px 0px 10px 0px;
+  font-size:30px;
+}
+.btns{
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+
+}
+.btns:hover{
+  border: 1px solid #000;
+  color: #000;
+  text-align: center;
+}
+h4{
+  text-align: center;
+  font-weight: bold;
+  font-family: serif;
+  color: black;
+}
+
+
+      </style>
+       
+
+      <title>Form</title>
+    </head>
+    <body>
+      <div class="form mt-5 mb-5">
+        <div class="title pb-3">
+          <h3>Enter your personal details :</h3>
+        </div>
+        <form action="{{url_for('predict')}}" method="POST">
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="input">
+                <label for="age">Age:</label><br />
+                <input
+                  type="text"
+                  placeholder="Enter age between 1-100 years"
+                  id="age"
+                  name="age"
+                  required="required"
+                  
+                />
+                <script type="text/javascript">
+                  const ageInput = document.getElementById("age");
+
+  ageInput.addEventListener("input", () => {
+    const age = ageInput.value;
+    const agePattern = /^[1-9]?[0-9]{1}$|^100$/;
+    
+    if (!agePattern.test(age)) {
+      ageInput.setCustomValidity("Please enter a valid age.");
+    } else {
+      ageInput.setCustomValidity("");
+    }
+  });
+
+                </script>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input gender">
+                <img src="">
+                <label for="age">Choose a Gender: :</label><br/>
+                <br>
+
+               <select name="gender" id="gender">
+              <option value="1" name="gender" selected>Male</option>
+              <option value="0" name="gender">Female </option>
+             </select>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input">
+                <label for="chest">Chest Pain Type :</label><br />
+                <br>
+               <select name="chest" value="chest" id="chest">
+              <option value="1" name="chest" selected>1.Typical angina</option>
+              <option value="2" name="chest" >2.Atypical angina </option>
+             <option value="3" name="chest" >3.Non-anginal pain</option>
+              <option value="4" name="chest" >4.Asymptomatic</option>
+             </select>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input mb-3">
+                <label for="trestbps">Trestbps(90-200):</label><br />
+                <input
+                  type="text"
+                  placeholder=" resting blood pressure"
+
+                  id="trestbps"
+                  name="trestbps"
+                  required="required"
+
+                />
+                <script type="text/javascript">
+                  const tres = document.getElementById("trestbps");
+
+tres.addEventListener("input", () => {
+  const trestbps = tres.value;
+  const trestbpsPattern = /^([9][0-9]|[1][0-9]{2}|200)$/;
+  
+  if (!trestbpsPattern.test(trestbps)) {
+    tres.setCustomValidity("Please enter a valid number from 90-200.");
+  } else {
+    tres.setCustomValidity("");
+  }
+});
+
+                </script>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input">
+                <label for="chol">Chol(120-700) :</label><br />
+                <input
+                  type="text"
+                  placeholder=" serum cholestoral in mg/dl"
+                  id="chol"
+                  name="chol"
+                  required="required"
+                />
+                  <script type="text/javascript">
+                  const choles = document.getElementById("chol");
+
+choles.addEventListener("input", () => {
+  const chol = choles.value;
+  const cholPattern = /^([1-7][0-9]{2}|800)$/;
+  
+  if (!cholPattern.test(chol)) {
+    choles.setCustomValidity("Please enter a valid number from 100-800.");
+  } else {
+    choles.setCustomValidity("");
+  }
+});
+</script>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input">
+                <label for="fbs">Fbs :</label><br />
+                <br>
+                <select name="fbs" value="fbs" id="fbs">
+              <option value="1" name="fbs"selected>1.True</option>
+              <option value="0" name="fbs">0. False </option>
+             </select>
+
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input">
+                <label for="restecg">Restecg :</label><br />
+                <br>
+              <select id="restecg" name="restecg">
+              <option value="0" name="restecg" selected>0.Normal</option>
+              <option value="1" name="restecg" >1.ST-T abnormality</option>
+               <option value="3" name="restecg">2.left ventricular hypertrophy</option>
+             </select>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input">
+                <label for="thalach">Thalach(70-250) :</label><br />
+                <input
+                  type="text"
+                  placeholder="Maximum heart rate achived"
+                  id="thalach"
+                  name="thalach"
+                  required="required"
+                />
+                  <script type="text/javascript">
+                  const thal = document.getElementById("thalach");
+
+thal.addEventListener("input", () => {
+  const thalach = thal.value;
+  const thalachPattern = /^([9][0-9]|[1][0-9]{2}|300)$/;
+  
+  if (!thalachPattern.test(thalach)) {
+    thal.setCustomValidity("Please enter a valid number from 100-800.");
+  } else {
+    thal.setCustomValidity("");
+  }
+});
+</script>
+
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input">
+                <label for="exang" required="required">Enang :</label><br />
+                <br>
+              <select id="exang" value="exang" name="exang" required>
+              <option value="1" name="exang" selected>1.True</option>
+              <option value="0" name="exang">0.False</option>
+
+             </select>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="input">
+                <label for="oldpeak">Old Peak(-2.6)-(7.0) :</label><br />
+                <input
+                  type="text"
+                  placeholder=" ST depression induced"
+                  id="oldpeak"
+                  name="oldpeak"
+                  required="required"
+                />
+                <script type="text/javascript">
+                  const oldp = document.getElementById("oldpeak");
+
+oldp.addEventListener("input", () => {
+  const oldpeak = oldp.value;
+  const oldpeakPattern = /^(-)?(\d|[7]\d)(\.\d{1,2})?$/;
+  
+  if (!oldpeakPattern.test(oldpeak)) {
+    oldp.setCustomValidity("Please enter a valid number from 100-800.");
+  } else {
+    oldp.setCustomValidity("");
+  }
+});
+</script>
+              </div>
+            </div>
+          </div>
+          
+          <div class="button">
+            <center>
+              <button type="submit" class="btn btns" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Check
+            </button>
+            </center>
+            
+          
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <h4 class="out" style="color:{{color}}">{{prediction}}</h4>
+                </div>
+              </div>
+                
+              </div>
+            </div>
+        </form>
+      </div>
+     
+      </script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+  </html>
